@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generated-by" content="Markdown PRO, http://markdownpro.com"/>
+<title></title>
+<style type="text/css">
+html,body{margin:0;padding:0;}
+body {padding: 20px}
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;font-family:inherit;}
+table{border-collapse:collapse;border-spacing:0;}
+ol,ul{list-style:none;}
+q:before,q:after,blockquote:before,blockquote:after{content:"";}
+html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+a:focus{outline:thin dotted;}
+a:hover,a:active{outline:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{border:0;-ms-interpolation-mode:bicubic;}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+button,input{line-height:normal;*overflow:visible;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;}
+input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+textarea{overflow:auto;vertical-align:top;}
+html,body{background-color:#ffffff;}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;color:#404040;}
+.container{width:940px;margin-left:auto;margin-right:auto;zoom:1;}.container:before,.container:after{display:table;content:"";zoom:1;*display:inline;}
+.container:after{clear:both;}
+.container-fluid{position:relative;min-width:940px;padding-left:20px;padding-right:20px;zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";zoom:1;*display:inline;}
+.container-fluid:after{clear:both;}
+.container-fluid>.sidebar{float:left;width:220px;}
+.container-fluid>.content{margin-left:240px;}
+a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:hover{color:#00438a;text-decoration:underline;}
+.pull-right{float:right;}
+.pull-left{float:left;}
+.hide{display:none;}
+.show{display:block;}
+.row{zoom:1;margin-left:-20px;}.row:before,.row:after{display:table;content:"";zoom:1;*display:inline;}
+.row:after{clear:both;}
+p{font-size:13px;font-weight:normal;line-height:18px;margin-bottom:9px;}p small{font-size:11px;color:#bfbfbf;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
+h1{margin-bottom:18px;font-size:30px;line-height:36px;}h1 small{font-size:18px;}
+h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
+h3,h4,h5,h6{line-height:36px;}
+h3{font-size:18px;}h3 small{font-size:14px;}
+h4{font-size:16px;}h4 small{font-size:12px;}
+h5{font-size:14px;}
+h6{font-size:13px;color:#bfbfbf;text-transform:uppercase;}
+ul,ol{margin:0 0 18px 25px;}
+ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
+ul{list-style:disc;}
+ol{list-style:decimal;}
+li{line-height:18px;color:#808080;}
+ul.unstyled{list-style:none;margin-left:0;}
+dl{margin-bottom:18px;}dl dt,dl dd{line-height:18px;}
+dl dt{font-weight:bold;}
+dl dd{margin-left:9px;}
+hr{margin:20px 0 19px;border:0;border-bottom:1px solid #eee;}
+strong{font-style:inherit;font-weight:bold;}
+em{font-style:italic;font-weight:inherit;line-height:inherit;}
+.muted{color:#bfbfbf;}
+blockquote{margin-bottom:18px;border-left:5px solid #eee;padding-left:15px;}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;}
+blockquote small{display:block;font-size:12px;font-weight:300;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
+address{display:block;line-height:18px;margin-bottom:18px;}
+code,pre{padding:0 3px 2px;font-family:Monaco, Andale Mono, Courier New, monospace;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+code{padding:1px 3px;}
+pre{background-color:#f5f5f5;display:block;padding:8.5px;margin:0 0 18px;line-height:18px;font-size:12px;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre;white-space:pre-wrap;word-wrap:break-word;}
+form{margin-bottom:18px;}
+fieldset{margin-bottom:18px;padding-top:18px;}fieldset legend{display:block;padding-left:150px;font-size:19.5px;line-height:1;color:#404040;*padding:0 0 5px 145px;*line-height:1.5;}
+form .clearfix{margin-bottom:18px;zoom:1;}form .clearfix:before,form .clearfix:after{display:table;content:"";zoom:1;*display:inline;}
+form .clearfix:after{clear:both;}
+label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:normal;}
+label{padding-top:6px;font-size:13px;line-height:18px;float:left;width:130px;text-align:right;color:#404040;}
+form .input{margin-left:150px;}
+input[type=checkbox],input[type=radio]{cursor:pointer;}
+input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;font-size:13px;line-height:18px;color:#808080;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;}
+input[type=file]{background-color:#ffffff;padding:initial;border:initial;line-height:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
+select,input[type=file]{height:27px;line-height:27px;*margin-top:4px;}
+select[multiple]{height:inherit;}
+textarea{height:auto;}
+.uneditable-input{background-color:#ffffff;display:block;border-color:#eee;-webkit-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);-moz-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);cursor:not-allowed;}
+:-moz-placeholder{color:#bfbfbf;}
+::-webkit-input-placeholder{color:#bfbfbf;}
+input,textarea{-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;-ms-transition:border linear 0.2s,box-shadow linear 0.2s;-o-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);}
+input:focus,textarea:focus{outline:0;border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);}
+input[type=file]:focus,input[type=checkbox]:focus,select:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;outline:1px dotted #666;}
+form div.clearfix.error{background:#fae5e3;padding:10px 0;margin:-10px 0 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}form div.clearfix.error>label,form div.clearfix.error span.help-inline,form div.clearfix.error span.help-block{color:#9d261d;}
+form div.clearfix.error input,form div.clearfix.error textarea{border-color:#c87872;-webkit-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);-moz-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);box-shadow:0 0 3px rgba(171, 41, 32, 0.25);}form div.clearfix.error input:focus,form div.clearfix.error textarea:focus{border-color:#b9554d;-webkit-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);-moz-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);box-shadow:0 0 6px rgba(171, 41, 32, 0.5);}
+form div.clearfix.error .input-prepend span.add-on,form div.clearfix.error .input-append span.add-on{background:#f4c8c5;border-color:#c87872;color:#b9554d;}
+table{width:100%;margin-bottom:18px;padding:0;border-collapse:separate;*border-collapse:collapse;font-size:13px;border:1px solid #ddd;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
+table th{padding-top:9px;font-weight:bold;vertical-align:middle;border-bottom:1px solid #ddd;}
+table td{vertical-align:top;}
+table th+th,table td+td{border-left:1px solid #ddd;}
+table tr+tr td{border-top:1px solid #ddd;}
+table tbody tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;-moz-border-radius:4px 0 0 0;border-radius:4px 0 0 0;}
+table tbody tr:first-child td:last-child{-webkit-border-radius:0 4px 0 0;-moz-border-radius:0 4px 0 0;border-radius:0 4px 0 0;}
+table tbody tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;}
+table tbody tr:last-child td:last-child{-webkit-border-radius:0 0 4px 0;-moz-border-radius:0 0 4px 0;border-radius:0 0 4px 0;}
+.zebra-striped tbody tr:nth-child(odd) td{background-color:#f9f9f9;}
+.zebra-striped tbody tr:hover td{background-color:#f5f5f5;}
+.zebra-striped .header{cursor:pointer;}.zebra-striped .header:after{content:"";float:right;margin-top:7px;border-width:0 4px 4px;border-style:solid;border-color:#000 transparent;visibility:hidden;}
+.zebra-striped .header:hover:after{visibility:visible;}
+footer{margin-top:17px;padding-top:17px;border-top:1px solid #eee;}
+.page-header{margin-bottom:17px;border-bottom:1px solid #ddd;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}.page-header h1{margin-bottom:8px;}
+.close{float:right;color:#000000;font-size:20px;font-weight:bold;line-height:13.5px;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-khtml-opacity:0.2;-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-khtml-opacity:0.4;-moz-opacity:0.4;opacity:0.4;}
+
+pre {
+	padding: 0;
+	margin: 10px 0px 10px;
+	overflow: auto; /*--If the Code exceeds the width, a scrolling is available--*/
+	overflow-Y: hidden;  /*--Hides vertical scroll created by IE--*/
+}
+pre code {
+	margin: 5px;  /*--Left Margin--*/
+	padding: 0px;
+	display: block;
+    line-height: 18px;
+}
+.center { text-align:center}
+.left {text-align:left}
+.right {text-align:right}
+
+</style><style type="text/css">
+body {
+	font-family: "Geneva", Arial, sans-serif;
+	font-size: 13px;
+	margin: 10px;
+}
+
+a, a:visited {
+	color: #09c;
+}
+
+a:hover {
+	color: #336699;
+	text-decoration: none;
+}
+
+h1 {
+	margin: 0px 0px 10px;	
+	font-weight: bold;
+}
+
+h2 {
+	border-bottom: 2px dotted #ccc;
+	margin: 5px 0px 15px;	
+}
+
+h6 {
+	color: #09c;
+}
+
+blockquote {
+	font-family: "Georgia", Courier New, courier, sans-serif;
+	background: #efefef;
+	padding: 5px 10px;
+	border: solid 1px #ddd;
+	margin: 15px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	color:  #333;
+	
+}
+
+ul, ol {
+	margin-bottom: 15px;
+}
+
+li {
+	padding: 3px;
+}
+
+
+
+code {
+	background-color: #f1f1f1;
+    color: #336699;
+}
+
+pre {
+	background-color: #f1f1f1;
+}
+
+pre > code {
+	margin: 0px;
+	padding: 5px;
+	border: 0px;
+	background-color: #f1f1f1;
+}
+
+
+</style></head>
+<body>
+<h1>iOS中copy,strong,retain,weak和assign的区别</h1>
+
+<p>在知道他们区别之前，我们首先要知道NSObject对象的赋值操作做了哪些操作。</p>
+
+<p>A=C其实是在内存中创建了一个A，然后又开辟了一个内存B，B里面存放的着值C。</p>
+
+<p>NSObject赋值示意图1
+如下：</p>
+
+<pre><code>NSMutableString*tempMStr = [[NSMutableString alloc]initWithString:@&quot;strValue&quot;];NSMutableString*tempMStr = [[NSMutableString alloc]initWithString:@&quot;strValue&quot;];
+
+NSLog(@&quot;tempMStr值地址:%p，tempMStr值%@ tempMStr值引用计数%@\n&quot;, tempMStr,tempMStr[tempMStrvalueForKey:@&quot;retainCount&quot;]);[tempMStrvalueForKey:@&quot;retainCount&quot;]);[tempMStrvalueForKey:@&quot;retainCount&quot;]);[tempMStrvalueForKey:@&quot;retainCount&quot;]);
+</code></pre>
+
+<p>//输出：tempMStr值地址:0x7a05f650，tempMStr值strValue tempMStr值引用计数1
+此处tempMStr就是A，值地址就是C，“strValue”就是b，而引用计数这个概念是针对堆中的数据，赋值给其他值或者指针设置为nil，如tempStr = nil，都会使得引用计数有所增减，如果该内存区域引用计数为0时就将数据抹除。而我们使用copy，strong,retain,weak,assign影响的就是是否开辟新的内存和是否对C是否进行引用计数增加。</p>
+
+<p>1.以典型的NSMutableString为例</p>
+
+<p>@property(copy,nonatomic)NSMutableString*aCopyMStr;</p>
+
+<p>@property(strong,nonatomic)NSMutableString*strongMStr;</p>
+
+<p>@property(weak,nonatomic)NSMutableString*weakMStr;</p>
+
+<p>@property(assign,nonatomic)NSMutableString<em>assignMStr;
+NSMutableString</em>mstrOrigin = [[NSMutableStringalloc]initWithString:@&quot;mstrOriginValue&quot;];</p>
+
+<p>self.aCopyMStr= mstrOrigin;</p>
+
+<p>self.strongMStr= mstrOrigin;</p>
+
+<p>self.strongMStr= mstrOrigin;</p>
+
+<p>self.weakMStr= mstrOrigin;</p>
+
+<p>NSLog(@&quot;mstrOrigin输出:%p,%@\n&quot;, mstrOrigin,mstrOrigin);</p>
+
+<p>NSLog(@&quot;aCopyMStr输出:%p,%@\n&quot;,<em>aCopyMStr,</em>aCopyMStr);</p>
+
+<p>NSLog(@&quot;strongMStr输出:%p,%@\n&quot;,<em>strongMStr,</em>strongMStr);</p>
+
+<p>NSLog(@&quot;weakMStr输出:%p,%@\n&quot;,<em>weakMStr,</em>weakMStr);</p>
+
+<p>NSLog(@&quot;引用计数%@&quot;,[mstrOriginvalueForKey:@&quot;retainCount&quot;]);
+2016-09-01 15:19:13.134 lbCopy[1205:87583] mstrOrigin输出:0x7892a5e0,mstrOriginValue
+2016-09-01 15:19:13.135 lbCopy[1205:87583] aCopyMStr输出:0x7893deb0,mstrOriginValue
+2016-09-01 15:19:13.135 lbCopy[1205:87583] strongMStr输出:0x7892a5e0,mstrOriginValue
+2016-09-01 15:19:13.135 lbCopy[1205:87583] weakMStr输出:0x7892a5e0,mstrOriginValue</p>
+
+<p>2016-09-01 15:19:13.135 lbCopy[1205:87583] 引用计数2
+除了copy修饰的aCopyMStr，strongMStr和weakMStr指针指向的内存地址都和mstrOrigin相同,但mstrOrigin内存引用计数为2，不为3，因为weakMStr不会增加指针指向的内存地址的计数指针。aCopyMStr赋值后则是自己单独在堆中开辟了一块内存，内存上保存“mstrOrigin”字符串，然后aCopyMStr指向了mstrOrigin。</p>
+
+<p>拷贝示意图如下</p>
+
+<p>NSMutableString拷贝示意图2
+可见当我修改mstrOrigin的值的时候，必然不会影响aCopyMStr,只会影响strongMStr和weakMStr。验证下</p>
+
+<p>NSLog(@&quot;------------------修改原值后------------------------&quot;);</p>
+
+<p>[mstrOriginappendString:@&quot;1&quot;];</p>
+
+<p>NSLog(@&quot;mstrOrigin输出:%p,%@\n&quot;, mstrOrigin,mstrOrigin);</p>
+
+<p>NSLog(@&quot;aCopyMStr输出:%p,%@\n&quot;,<em>aCopyMStr,</em>aCopyMStr);</p>
+
+<p>NSLog(@&quot;strongMStr输出:%p,%@\n&quot;,<em>strongMStr,</em>strongMStr);</p>
+
+<p>NSLog(@&quot;weakMStr输出:%p,%@\n&quot;,<em>weakMStr,</em>weakMStr);
+输出结果</p>
+
+<p>2016-09-01 15:33:02.839 lbCopy[1205:87583] mstrOrigin输出:0x7892a5e0,mstrOrigin1</p>
+
+<p>2016-09-01 15:33:02.839 lbCopy[1205:87583] aCopyMStr输出:0x7893deb0,mstrOrigin</p>
+
+<p>2016-09-01 15:33:02.839 lbCopy[1205:87583] strongMStr输出:0x7892a5e0,mstrOrigin1</p>
+
+<p>2016-09-01 15:33:02.839 lbCopy[1205:87583] weakMStr输出:0x7892a5e0,mstrOrigin1
+所以：copy会重新开辟内存地址，内存保存的数据是B。被赋值对象和原值修改互不影响。</p>
+
+<p>1.1那么weak和strong的区别呢？
+上面提到weakMStr不会增加值地址C的引用计数，并且说道到引用计数为0的时候，值会变为nil，那么我们初始化mstrOrigin和并将strongMStr设置为nil让C的引用计数为0，然后输出weakMStr，看是否为nil.（初始化和设为nil都可以将指针所指向的值地址引用计数减少1）</p>
+
+<p>mstrOrigin = [[NSMutableStringalloc]initWithString:@&quot;mstrOriginChange2&quot;];</p>
+
+<p>self.strongMStr=nil;</p>
+
+<p>NSLog(@&quot;mstrOrigin输出:%p,%@\n&quot;, mstrOrigin,mstrOrigin);</p>
+
+<p>NSLog(@&quot;strongMStr输出:%p,%@\n&quot;,<em>strongMStr,</em>strongMStr);</p>
+
+<p>NSLog(@&quot;weakMStr输出:%p,%@\n&quot;,<em>weakMStr,</em>weakMStr);
+输出结果</p>
+
+<p>2016-09-01 15:41:33.793 lbCopy[1247:100742] mstrOrigin输出:0x7874d140,mstrOriginChange2</p>
+
+<p>2016-09-01 15:41:33.793 lbCopy[1247:100742] strongMStr输出:0x0,(null)</p>
+
+<p>2016-09-01 15:41:33.794 lbCopy[1247:100742] weakMStr输出:0x0,(null)
+可见之前引用计数2是mstrOrigin和strongMStr添加的。所以strong和weak虽然都指向原来值的地址，但前者会对值地址进行引用计数+1防止原地址值被释放，但后者不会，当其他值都不在指向值地址时，weak的值也就是为nil了。</p>
+
+<p>1.2那assign和weak又有什么区别呢
+我们实验以下代码</p>
+
+<p>self.assignMStr= mstrOrigin;</p>
+
+<p>self.weakMStr= mstrOrigin;</p>
+
+<p>mstrOrigin = [[NSMutableStringalloc]initWithString:@&quot;mstrOriginChange3&quot;];</p>
+
+<p>NSLog(@&quot;weakMStr输出:%p,%@\n&quot;,<em>weakMStr,</em>weakMStr);</p>
+
+<p>NSLog(@&quot;assignMStr输出:%p,%@\n&quot;,self.assignMStr,self.assignMStr);
+可以发现在输出assignMStr时会偶尔出现奔溃的情况。原因是发送了野指针的情况。assign同weak，指向C并且计数不+1，但当C地址引用计数为0时，assign不会对C地址进行B数据的抹除操作，只是进行值释放。这就导致野指针存在，即当这块地址还没写上其他值前，能输出正常值，但一旦重新写上数据，该指针随时可能没有值，造成奔溃。</p>
+
+<p>1.3那retain是什么
+ARC之前属性构造器的关键字是retain,copy,assign，strong和weak是ARC带出来的关键字。retain现在同strong，就是指针指向值地址，同时进行引用计数加1。</p>
+
+<p>2.非NSMutableString的情况
+上面我们讨论了典型的例子NSMutableString，即非容器可变变量。也就是说还存在其他三种类型需要讨论...</p>
+
+<p>1.非容器不可变变量NSSting</p>
+
+<p>2.容器可变变量NSMutableArray</p>
+
+<p>3.容器不可变变量NSArray</p>
+
+<p>更重要的是不同类型会有不同结果...，好吧，不要奔溃，上面一大段我们讨论了1/4。接下来我们要讨论其他的3/4情况。但好消息是，其他几种情况基本都是上面非容器可变变量情况类似的。</p>
+
+<p>2.1容器可变变量
+容器可变变量的典型例子就是NSMutableArray</p>
+
+<p>@property(copy,nonatomic)NSMutableArray*aCopyMArr;</p>
+
+<p>@property(strong,nonatomic)NSMutableArray*strongMArr;</p>
+
+<p>@property(weak,nonatomic)NSMutableArray<em>weakMArr;
+NSMutableArray</em>mArrOrigin = [[NSMutableArrayalloc]init];</p>
+
+<p>NSMutableString*mstr1 = [[NSMutableStringalloc]initWithString:@&quot;value1&quot;];</p>
+
+<p>NSMutableString*mstr2 = [[NSMutableStringalloc]initWithString:@&quot;value2&quot;];</p>
+
+<p>NSMutableString*mstr3 = [[NSMutableStringalloc]initWithString:@&quot;value3&quot;];</p>
+
+<p>[mArrOriginaddObject:mstr1];</p>
+
+<p>[mArrOriginaddObject:mstr2];</p>
+
+<p>self.aCopyMArr= mArrOrigin;</p>
+
+<p>self.strongMArr= mArrOrigin;</p>
+
+<p>self.weakMArr= mArrOrigin;</p>
+
+<p>NSLog(@&quot;mArrOrigin输出:%p,%@\n&quot;, mArrOrigin,mArrOrigin);</p>
+
+<p>NSLog(@&quot;aCopyMArr输出:%p,%@\n&quot;,<em>aCopyMArr,</em>aCopyMArr);</p>
+
+<p>NSLog(@&quot;strongMArr输出:%p,%@\n&quot;,<em>strongMArr,</em>strongMArr);</p>
+
+<p>NSLog(@&quot;weakMArr输出:%p,%@\n&quot;,<em>weakMArr,</em>weakMArr);
+NSLog(@&quot;weakMArr输出:%p,%@\n&quot;,<em>weakMArr[0],</em>weakMArr[0]);</p>
+
+<p>NSLog(@&quot;mArrOrigin中的数据引用计数%@&quot;, [mArrOriginvalueForKey:@&quot;retainCount&quot;]);</p>
+
+<p>NSLog(@&quot;%p %p %p %p&quot;,&amp;mArrOrigin,mArrOrigin,mArrOrigin[0],mArrOrigin[1]);</p>
+
+<p>[mArrOriginaddObject:mstr3];</p>
+
+<p>NSLog(@&quot;mArrOrigin输出:%p,%@\n&quot;, mArrOrigin,mArrOrigin);</p>
+
+<p>NSLog(@&quot;aCopyMArr输出:%p,%@\n&quot;,<em>aCopyMArr,</em>aCopyMArr);</p>
+
+<p>NSLog(@&quot;strongMArr输出:%p,%@\n&quot;,<em>strongMArr,</em>strongMArr);</p>
+
+<p>NSLog(@&quot;weakMArr输出:%p,%@\n&quot;,<em>weakMArr,</em>weakMArr);
+NSLog(@&quot;mArrOrigin中的数据引用计数%@&quot;, [mArrOriginvalueForKey:@&quot;retainCount&quot;]);</p>
+
+<p>[mstr1appendFormat:@&quot;aaa&quot;];</p>
+
+<p>NSLog(@&quot;mArrOrigin输出:%p,%@\n&quot;, mArrOrigin,mArrOrigin);</p>
+
+<p>NSLog(@&quot;aCopyMArr输出:%p,%@\n&quot;,<em>aCopyMArr,</em>aCopyMArr);</p>
+
+<p>NSLog(@&quot;strongMArr输出:%p,%@\n&quot;,<em>strongMArr,</em>strongMArr);</p>
+
+<p>NSLog(@&quot;weakMArr输出:%p,%@\n&quot;,<em>weakMArr,</em>weakMArr);
+2016-09-02 20:42:30.777 lbCopy[4207:475091] mArrOrigin输出:0x78f81680,(</p>
+
+<p>value1,</p>
+
+<p>value2</p>
+
+<p>)
+2016-09-02 20:42:30.777 lbCopy[4207:475091] aCopyMArr输出:0x7a041340,(</p>
+
+<p>value1,</p>
+
+<p>value2</p>
+
+<p>)
+2016-09-02 20:42:30.777 lbCopy[4207:475091] strongMArr输出:0x78f81680,(</p>
+
+<p>value1,</p>
+
+<p>value2</p>
+
+<p>)
+2016-09-02 20:42:30.777 lbCopy[4207:475091] weakMArr输出:0x78f81680,(</p>
+
+<p>value1,</p>
+
+<p>value2</p>
+
+<p>)
+2016-09-02 20:42:30.777 lbCopy[4207:475091] weakMArr输出:0x78f816a0,value1</p>
+
+<p>2016-09-02 20:42:30.778 lbCopy[4207:475091] mArrOrigin中的数据引用计数(</p>
+
+<p>3,</p>
+
+<p>3</p>
+
+<p>)
+2016-09-02 20:42:30.778 lbCopy[4207:475091] 0xbffb4098 0x78f81680 0x78f816a0 0x78f81710</p>
+
+<p>2016-09-02 20:42:30.778 lbCopy[4207:475091] mArrOrigin输出:0x78f81680,(</p>
+
+<p>value1,</p>
+
+<p>value2,</p>
+
+<p>value3</p>
+
+<p>)
+2016-09-02 20:42:30.778 lbCopy[4207:475091] aCopyMArr输出:0x7a041340,(</p>
+
+<p>value1,</p>
+
+<p>value2</p>
+
+<p>)
+2016-09-02 20:42:30.778 lbCopy[4207:475091] strongMArr输出:0x78f81680,(</p>
+
+<p>value1,</p>
+
+<p>value2,</p>
+
+<p>value3</p>
+
+<p>)
+2016-09-02 20:42:30.778 lbCopy[4207:475091] weakMArr输出:0x78f81680,(</p>
+
+<p>value1,</p>
+
+<p>value2,</p>
+
+<p>value3</p>
+
+<p>)
+2016-09-02 20:42:30.779 lbCopy[4207:475091] mArrOrigin中的数据引用计数(</p>
+
+<p>3,</p>
+
+<p>3,</p>
+
+<p>2</p>
+
+<p>)
+2016-09-02 20:42:30.779 lbCopy[4207:475091] mArrOrigin输出:0x78f81680,(</p>
+
+<p>value1aaa,</p>
+
+<p>value2,</p>
+
+<p>value3</p>
+
+<p>)
+2016-09-02 20:42:30.779 lbCopy[4207:475091] aCopyMArr输出:0x7a041340,(</p>
+
+<p>value1aaa,</p>
+
+<p>value2</p>
+
+<p>)
+2016-09-02 20:42:30.779 lbCopy[4207:475091] strongMArr输出:0x78f81680,(</p>
+
+<p>value1aaa,</p>
+
+<p>value2,</p>
+
+<p>value3</p>
+
+<p>)
+2016-09-02 20:42:30.779 lbCopy[4207:475091] weakMArr输出:0x78f81680,(</p>
+
+<p>value1aaa,</p>
+
+<p>value2,</p>
+
+<p>value3</p>
+
+<p>)
+上面代码有点多，所做的操作是mArrOrigin（value1,value2）赋值给aCopyMArr,strongMArr,weakMArr。然后输出mArrOrigin的引用计数，和数组地址。发现其中数组本身指向的内存地址除了aCopyMArr重新开辟了一块地址，strongMArr,weakMArr和mArrOrigin指针指向的地址是一样的。也就是说</p>
+
+<p>容器可变变量中容器本身和非容器可变变量是一样的，copy深拷贝，strongMArr,weakMArr和assign都是浅拷贝</p>
+
+<p>另外我们发现背拷贝对象mArrOrigin中的数据引用计数居然不是1而是3。也就是说容器内的数据拷贝都是进行了深拷贝。同事当我们修改数组中的一个数据时strongMArr,weakMArr，aCopyMArr中的数据都改变了，说明</p>
+
+<p>容器可变变量中的数据在拷贝的时候都是浅拷贝</p>
+
+<p>容器可变变量的拷贝结构如下图</p>
+
+<p>NSMutableArray拷贝示意图3
+2.2非容器不变变量</p>
+
+<p>典型例子是NSString</p>
+
+<p>我们还是以代码引出结果</p>
+
+<p>@property(copy,nonatomic)NSString*aCopyStr;</p>
+
+<p>@property(strong,nonatomic)NSString*strongStr;</p>
+
+<p>@property(weak,nonatomic)NSString*weakStr;</p>
+
+<p>@property(assign,nonatomic)NSString*assignStr;
+NSLog(@&quot;\n\n\n\n------------------不可变量实验------------------------&quot;);</p>
+
+<p>NSString*strOrigin = [[NSStringalloc]initWithUTF8String:&quot;string 1&quot;];</p>
+
+<p>self.aCopyStr= strOrigin;</p>
+
+<p>self.strongStr= strOrigin;</p>
+
+<p>self.weakStr= strOrigin;</p>
+
+<p>NSLog(@&quot;strOrigin输出:%p,%@\n&quot;, strOrigin,strOrigin);</p>
+
+<p>NSLog(@&quot;aCopyStr输出:%p,%@\n&quot;,<em>aCopyStr,</em>aCopyStr);</p>
+
+<p>NSLog(@&quot;strongStr输出:%p,%@\n&quot;,<em>strongStr,</em>strongStr);</p>
+
+<p>NSLog(@&quot;weakStr输出:%p,%@\n&quot;,<em>weakStr,</em>weakStr);</p>
+
+<p>NSLog(@&quot;------------------修改原值后------------------------&quot;);</p>
+
+<p>strOrigin =@&quot;aaa&quot;;</p>
+
+<p>NSLog(@&quot;strOrigin输出:%p,%@\n&quot;, strOrigin,strOrigin);</p>
+
+<p>NSLog(@&quot;aCopyStr输出:%p,%@\n&quot;,<em>aCopyStr,</em>aCopyStr);</p>
+
+<p>NSLog(@&quot;strongStr输出:%p,%@\n&quot;,<em>strongStr,</em>strongStr);</p>
+
+<p>NSLog(@&quot;weakStr输出:%p,%@\n&quot;,<em>weakStr,</em>weakStr);</p>
+
+<p>NSLog(@&quot;------------------结论------------------------&quot;);</p>
+
+<p>NSLog(@&quot;strOrigin值值为改变，但strOrigin和aCopyStr指针地址和指向都已经改变，说明不可变类型值不可被修改，重新初始化&quot;);</p>
+
+<p>self.aCopyStr=nil;</p>
+
+<p>self.strongStr=nil;</p>
+
+<p>NSLog(@&quot;strOrigin输出:%p,%@\n&quot;, strOrigin,strOrigin);</p>
+
+<p>NSLog(@&quot;aCopyStr输出:%p,%@\n&quot;,<em>aCopyStr,</em>aCopyStr);</p>
+
+<p>NSLog(@&quot;strongStr输出:%p,%@\n&quot;,<em>strongStr,</em>strongStr);</p>
+
+<p>NSLog(@&quot;weakStr输出:%p,%@\n&quot;,<em>weakStr,</em>weakStr);</p>
+
+<p>NSLog(@&quot;------------------结论------------------------&quot;);</p>
+
+<p>NSLog(@&quot;当只有weakStr拥有C时，值依旧会被释放，同非容器可变变量&quot;);
+------------------不可变量实验------------------------</p>
+
+<p>2016-09-02 21:08:44.053 lbCopy[4297:488549] strOrigin输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.053 lbCopy[4297:488549] aCopyStr输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] strongStr输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] weakStr输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] strOrigin值内存引用计数3</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] ------------------修改原值后------------------------</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] strOrigin输出:0x8c1f8,aaa</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] aCopyStr输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.054 lbCopy[4297:488549] strongStr输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.055 lbCopy[4297:488549] weakStr输出:0x7a2550d0,string 1</p>
+
+<p>2016-09-02 21:08:44.055 lbCopy[4297:488549] ------------------结论------------------------</p>
+
+<p>2016-09-02 21:08:44.055 lbCopy[4297:488549] strOrigin值值为改变，但strOrigin和aCopyStr指针地址和指向都已经改变，说明不可变类型值不可被修改，重新初始化</p>
+
+<p>2016-09-02 21:08:44.059 lbCopy[4297:488549] strOrigin输出:0x8c1f8,aaa</p>
+
+<p>2016-09-02 21:08:44.059 lbCopy[4297:488549] aCopyStr输出:0x0,(null)</p>
+
+<p>2016-09-02 21:08:44.060 lbCopy[4297:488549] strongStr输出:0x0,(null)</p>
+
+<p>2016-09-02 21:08:44.060 lbCopy[4297:488549] weakStr输出:0x0,(null)</p>
+
+<p>2016-09-02 21:08:44.060 lbCopy[4297:488549] ------------------结论------------------------</p>
+
+<p>2016-09-02 21:08:44.061 lbCopy[4297:488549]当只有weakStr拥有C时，值依旧会被释放，同非容器可变变量
+此处我们将strOrigin拷贝给aCopyStr，strongStr，weakStr，然后输出他们的值地址，发现他们四个的值地址一样，且strOrigin值的引用计数为3。修改strOrigin和发现strOrigin值地址改变，其他三个值地址不变，将aCopyStr，strongStr设为nil后，发现weakStr随之nil。</p>
+
+<p>综合上面现象发现除了copy是浅拷贝外，其他特性和非容器可变变量一样。那么为什么copy是浅拷贝呢，也就是说为什么aCopyStr不自己开辟一个独立的内存出来呢。答案很简单，因为不可变量的值不会改变，既然都不会改变，所以没必要重新开辟一个内存出来让aCopyStr指向他，直接指向原来值位置就可以了。示意图如下</p>
+
+<p>NSString拷贝示意图4
+非容器不可变量除了copy其他特性同非容器可变变量，copy是浅拷贝</p>
+
+<p>2.3不可变容器变量
+典型对象NSArray。该对象实验自行实验。但结论在这里给出，其实不实验也可以大概知道概率</p>
+
+<p>在不可变容器变量中，容器本身都是浅拷贝包括copy，同NSString，容器里面的数据都是浅拷贝，同NSMutableArray。</p>
+
+<p>3.总结
+copy，strong，weak，assign的区别。</p>
+
+<p>可变变量中，copy是重新开辟一个内存，strong，weak，assgin后三者不开辟内存，只是指针指向原来保存值的内存的位置，storng指向后会对该内存引用计数+1，而weak，assgin不会。weak，assgin会在引用保存值的内存引用计数为0的时候值为空，并且weak会将内存值设为nil，assign不会，assign在内存没有被重写前依旧可以输出，但一旦被重写将出现奔溃</p>
+
+<p>不可变变量中，因为值本身不可被改变，copy没必要开辟出一块内存存放和原来内存一模一样的值，所以内存管理系统默认都是浅拷贝。其他地方和可变变量一样，如weak修饰的变量同样会在内存引用计数为0时变为nil。</p>
+
+<p>容器本身遵守上面准则，但容器内部的每个值都是浅拷贝。</p>
+
+<p>综上所述，当创建property构造器创建变量value1的时候，使用copy，strong，weak，assign根据具体使用情况来决定。value1 = value2，如果你希望value1和value2的修改不会互相影响的就用用copy，反之用strong,weak,assign。如果你还希望原来值C(C是什么见示意图1)为nil的时候，你的变量不为nil就用strong,反之用weak和assign。weak和assign保证了不强引用某一块内存，如delegate我们就用weak表示，就是为了防止循环引用的产生。</p>
+
+<p>补充
+delegate为什么要用weak或者assign而不用strong，a创建对象b,b中有C类对象c，所以a对b有一个引用,b对c有一个引用，a.b引用计数分别为1，1。当c.delegate = b的时候，实则是对a有了一个引用，如果此时c的delegate用strong修饰则会对b的值内存引用计数+1，b引用计数为2。当a的生命周期结束，随之释放对b的引用，b的引用计数变为1，导致b不能释放，b不能释放又导致b对c的引用不能释放，c引用计数还是为1，这样就造成了b和c一直留在了内存中。</p>
+
+<p>而要解决这个问题就是使用weak或者assign修饰delegate，这样虽然会有c仍然会对b有一个引用，但是引用是弱引用，当a生命周期结束的时候，b的引用计数变为0，b释放后随之c的引用消失，c引用计数变为0，释放。</p>
+
+<p>项目地址<a href="mailto:git@github.com">git@github.com</a>:ai966669/copy.git</p>
+
+<p>交流qq:578172874</p>
+
+<p>错误之处希望能帮忙提出来，O(∩_∩)O谢谢了</p>
+
+</body>
+</html>
