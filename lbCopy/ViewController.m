@@ -1,7 +1,7 @@
 //
 //  ViewController.m
 //  lbCopy
-//
+//  
 //  Created by ai966669 on 16/8/30.
 //  Copyright © 2016年 ai966669. All rights reserved.
 //
@@ -15,11 +15,17 @@
 
 @implementation ViewController
 
+- (void)setACopyMStr:(NSMutableString *)aCopyMStr {
+    _aCopyMStr = [aCopyMStr copy];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     //给一个NSObject的变量A赋值B,我们其实是创建了一个指针A，然后指向了一个保存数据B的内存，这个内存地址是C。
-    NSMutableString *tempMStr = [[NSMutableString alloc] initWithString:@"strValue"];
-    NSLog(@"tempMStr指针地址:%p，tempMStr值%@ tempMStr值引用计数%@\n", tempMStr,tempMStr,[tempMStr valueForKey:@"retainCount"]); //tempMStr指针地址:0x7a05f650，tempStr值strValue tempStr值引用计数1
+//    NSMutableString *tempMStr = [[NSMutableString alloc] initWithString:@"strValue"];
+//    NSLog(@"tempMStr指针地址:%p，tempMStr值%@ tempMStr值引用计数%@\n", tempMStr,tempMStr,[tempMStr valueForKey:@"retainCount"]); //tempMStr指针地址:0x7a05f650，tempStr值strValue tempStr值引用计数1
     
     //strong，weak，retain，copy和assgin区别。strong，weak在arc时出现，后三者在mrc时出现。
     //不同修饰符在不同类型变量中有不同的效果，变量分为可变非容器变量
@@ -31,19 +37,20 @@
     //1.可变非容器变量
     //1.copy会重新开辟内存地址，内存保存的数据是B。被赋值对象和原值修改互不影响。
     //2.strong会让指针指向C，同时给C的引用计数+1。所以原来值改变或者被赋值的值改变的时候，都会彼此影响。retain同strong
-    //3.weak同Strong,但他们不会给C的引用计数+1，应用计数为0的时候,内存将被释放，原来数据内存地址赋值为nil。
+    //3.weak同strong,但他们不会给C的引用计数+1，应用计数为0的时候,内存将被释放，原来数据内存地址赋值为nil。
     //4.assign同weak，指向C并且计数不+1，区别在于assign不会对C值进行B数据的抹除操作，只是进行值释放。这就导致野指针存在，即当这块地址还没写上其他值前，能输出正常值，但一旦重新写上数据，该指针随时可能没有值，造成奔溃。
 
     NSLog(@"\n\n\n\n------------------可变变量实验------------------------");
-    NSMutableString *mstrOrigin = [[NSMutableString alloc] initWithString:@"mstrOrigin"];
+    NSMutableString *mstrOrigin = [[NSMutableString alloc] initWithString:@"mstrOrigin in heap"];
     self.aCopyMStr = mstrOrigin;
     self.strongMStr = mstrOrigin;
     self.weakMStr = mstrOrigin;
-    NSLog(@"mstrOrigin输出:%p,%@\n", mstrOrigin,mstrOrigin);
-    NSLog(@"aCopyMStr输出:%p,%@\n", _aCopyMStr,_aCopyMStr);
-    NSLog(@"strongMStr输出:%p,%@\n", _strongMStr,_strongMStr);
-    NSLog(@"weakMStr输出:%p,%@\n", _weakMStr,_weakMStr);
+    NSLog(@"mstrOrigin输出:指针地址%p,值地址%p,%@\n", &mstrOrigin,mstrOrigin,mstrOrigin);
+    NSLog(@"aCopyMStr输出:指针地址%p,值地址%p,%@\n", &_aCopyMStr,_aCopyMStr,_aCopyMStr);
+    NSLog(@"strongMStr输出:指针地址%p,值地址%p,%@\n", &_strongMStr,_strongMStr,_strongMStr);
+    NSLog(@"weakMStr输出:指针地址%p,值地址%p,%@\n", &_weakMStr,_weakMStr,_weakMStr);
     NSLog(@"引用计数%@",[mstrOrigin valueForKey:@"retainCount"]);
+    NSLog(@"引用计数%@",[_weakMStr valueForKey:@"retainCount"]); //？遗留问题，为什么此处_weakMStr是3
     NSLog(@"------------------结论------------------------");
     NSLog(@"除了copy修饰的aCopyMStr，strongMStr和weakMStr指针指向的内存地址都和mstrOrigin相同,但mstrOrigin内存引用计数为2，不为3，因为weakMStr不会增加指针指向的内存地址的计数指针。aCopyMStr赋值后则是自己单独在堆中开辟了一块内存，内存上保存“mstrOrigin”字符串，然后aCopyMStr指向了mstrOrigin");
     NSLog(@"------------------修改原值后------------------------");
@@ -69,7 +76,7 @@
     NSLog(@"assignMStr输出:%p,%@\n", _assignMStr,_assignMStr);
     mstrOrigin = [[NSMutableString alloc] initWithString:@"mstrOriginChange3"];
     NSLog(@"weakMStr输出:%p,%@\n", _weakMStr,_weakMStr);
-//    NSLog(@"assignMStr输出:%p,%@\n", self.assignMStr,self.assignMStr);
+//    NSLog(@"assignMStr输出:%p,%@\n", _assignMStr,_assignMStr);
     NSLog(@"------------------结论------------------------");
     NSLog(@"可以当mstrOrigin重新初始化后，assignMStr输出偶先奔溃，不奔溃的时候也存在值，且值不为nil。证明结论4");
     
@@ -83,24 +90,27 @@
     //4.assign同weak
     
 
+    
+    //dohere  nsstring的copy和strong以及assgin的区别不能通过引用计数来讲，因为nsstring是存在放在_TEXT段的，而引用计数是放在堆内存中的一个整型，对象alloc开辟堆内存空间后，引用计数自动置1；
+    //_TEXT段：整个程序的代码，以及所有的常量。这部分内存是是固定大小的，只读的。了解_TEXT段内存管理方式，来分析copy ，strong，assgin的区别。
     NSLog(@"\n\n\n\n------------------不可变量实验------------------------");
-    NSString *strOrigin = [[NSString alloc] initWithUTF8String:"string 1"];
-    self.aCopyStr  = strOrigin;
+    NSString *strOrigin = [[NSString alloc] initWithUTF8String:"strOrigin0123456"];
+    self.aCopyStr  = strOrigin;  
     self.strongStr  = strOrigin;
     self.weakStr = strOrigin;
-    NSLog(@"strOrigin输出:%p,%@\n", strOrigin,strOrigin);
-    NSLog(@"aCopyStr输出:%p,%@\n", _aCopyStr,_aCopyStr);
-    NSLog(@"strongStr输出:%p,%@\n", _strongStr,_strongStr);
-    NSLog(@"weakStr输出:%p,%@\n", _weakStr,_weakStr);
+    NSLog(@"strOrigin输出:值地址%p,指针地址%p,%@\n", strOrigin,&strOrigin,strOrigin);
+    NSLog(@"aCopyStr输出:值地址%p,指针地址%p,%@\n",  _aCopyStr,&_aCopyStr,_aCopyStr);
+    NSLog(@"strongStr输出:值地址%p,指针地址%p,%@\n", _strongStr,&_strongStr,_strongStr);
+    NSLog(@"weakStr输出:值地址%p,指针地址%p,%@\n", _weakStr,&_weakStr,_weakStr);
     NSLog(@"strOrigin值内存引用计数%@\n", [_strongStr valueForKey:@"retainCount"]);
     NSLog(@"------------------修改原值后------------------------");
-    strOrigin = @"aaa";
+    strOrigin = [[NSString alloc] initWithUTF8String:"aaa"];
     NSLog(@"strOrigin输出:%p,%@\n", strOrigin,strOrigin);
     NSLog(@"aCopyStr输出:%p,%@\n", _aCopyStr,_aCopyStr);
     NSLog(@"strongStr输出:%p,%@\n", _strongStr,_strongStr);
     NSLog(@"weakStr输出:%p,%@\n", _weakStr,_weakStr);
     NSLog(@"------------------结论------------------------");
-    NSLog(@"strOrigin值值为改变，但strOrigin和aCopyStr指针地址和指向都已经改变，说明不可变类型值不可被修改，重新初始化");
+    NSLog(@"strOrigin值被改变，其他指针指向没有变化。说明不可变类型值不可被修改，只能被重新初始化");
     self.aCopyStr  = nil;
     self.strongStr  = nil;
     NSLog(@"strOrigin输出:%p,%@\n", strOrigin,strOrigin);
@@ -112,7 +122,7 @@
     
     
     //3.可变容器变量，如NSMutableArray。容器本身和可变非容器变量一样。但容器中的数据不管是copy和weak，还是strong都是浅拷贝
-    NSMutableArray *mArrOrigin = [[NSMutableArray alloc] init];
+    NSMutableArray   *mArrOrigin = [[NSMutableArray alloc] init];
     NSMutableString  *mstr1 = [[NSMutableString alloc] initWithString:@"value1"];
     NSMutableString  *mstr2 = [[NSMutableString alloc] initWithString:@"value2"];
     NSMutableString  *mstr3 = [[NSMutableString alloc] initWithString:@"value3"];
@@ -128,12 +138,13 @@
     NSLog(@"weakMArr输出:%p,%@\n", _weakMArr[0],_weakMArr[0]);
     NSLog(@"mArrOrigin中的数据引用计数%@", [mArrOrigin valueForKey:@"retainCount"]);
     NSLog(@"%p %p %p %p",&mArrOrigin,mArrOrigin,mArrOrigin[0],mArrOrigin[1]);
-    [mArrOrigin addObject:mstr3];
+    [_weakMArr addObject:mstr3];
     NSLog(@"mArrOrigin输出:%p,%@\n" , mArrOrigin,mArrOrigin);
     NSLog(@"aCopyMArr输出:%p,%@\n", _aCopyMArr,_aCopyMArr);
     NSLog(@"strongMArr输出:%p,%@\n", _strongMArr,_strongMArr);
     NSLog(@"weakMArr输出:%p,%@\n", _weakMArr,_weakMArr);
     NSLog(@"mArrOrigin中的数据引用计数%@", [mArrOrigin valueForKey:@"retainCount"]);
+    NSLog(@"-------aCopyMArr输出:%p,%@ %@\n", mstr1,mstr1,[mstr1 valueForKey:@"retainCount"]);
     [mstr1 appendFormat:@"aaa"];
     NSLog(@"mArrOrigin输出:%p,%@\n" , mArrOrigin,mArrOrigin);
     NSLog(@"aCopyMArr输出:%p,%@\n", _aCopyMArr,_aCopyMArr);
@@ -170,6 +181,9 @@
 //    容器本身遵守上面准则，但容器内部的每个值都是浅拷贝。
 //    综上所述，当创建property构造器创建变量value1的时候，使用copy，strong，weak，assign根据具体使用情况来决定。value1 = value2，如果你希望value1和value2的修改不会互相影响的就用用copy，反之用strong，weak,assign。如果你还希望原来值C为nil的时候，你的变量不为nil就用strong,反之用weak和assign。
 
+    
+//    实际应用，不同页面之间值如果希望同时被修改就用strong，如果同时修改但希望不强引用就是用weak，如果只是拿这个值就用copy。数组拷贝的时候要注意，里面元素不会深拷贝，如果希望强拷贝
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
